@@ -1,0 +1,1845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JLPT N3 Complete Strategy Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background-color: #f8f9fa;
+        }
+
+        .header {
+            background-color: #1a1a2e;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-bottom: 4px solid #e74c3c;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header .subtitle {
+            font-size: 1.2rem;
+            color: #ecf0f1;
+            margin-bottom: 1rem;
+        }
+
+        .score-info {
+            background-color: #16213e;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .score-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .score-item {
+            background-color: #0f3460;
+            padding: 1rem;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .score-item strong {
+            display: block;
+            font-size: 1.8rem;
+            color: #3498db;
+            margin-bottom: 0.3rem;
+        }
+
+        .nav {
+            background-color: #fff;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .nav a {
+            color: #2c3e50;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .nav a:hover {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            background-color: white;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .section-header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1.5rem 2rem;
+            border-left: 5px solid #e74c3c;
+        }
+
+        .section-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .section-header .meta {
+            font-size: 0.9rem;
+            color: #ecf0f1;
+        }
+
+        .section-content {
+            padding: 2rem;
+        }
+
+        .flow-diagram {
+            background-color: #ecf0f1;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .flow-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .flow-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .flow-step::after {
+            content: '↓';
+            position: absolute;
+            left: 27px;
+            bottom: -25px;
+            font-size: 1.5rem;
+            color: #3498db;
+        }
+
+        .flow-step:last-child::after {
+            display: none;
+        }
+
+        .step-number {
+            background-color: #3498db;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            margin-right: 1.5rem;
+        }
+
+        .step-content {
+            flex: 1;
+            background-color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 6px;
+            border-left: 3px solid #3498db;
+        }
+
+        .step-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 0.3rem;
+        }
+
+        .keyword-box {
+            background-color: #fff5e6;
+            border-left: 4px solid #f39c12;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .keyword-box h4 {
+            color: #e67e22;
+            margin-bottom: 1rem;
+        }
+
+        .keyword-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 0.8rem;
+        }
+
+        .keyword {
+            background-color: white;
+            padding: 0.5rem 0.8rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            border: 1px solid #f39c12;
+        }
+
+        .tip-box {
+            background-color: #e8f8f5;
+            border-left: 4px solid #27ae60;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .tip-box h4 {
+            color: #27ae60;
+            margin-bottom: 1rem;
+        }
+
+        .warning-box {
+            background-color: #ffebee;
+            border-left: 4px solid #e74c3c;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .warning-box h4 {
+            color: #e74c3c;
+            margin-bottom: 1rem;
+        }
+
+        .trap-item {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .trap-item::before {
+            content: '❌';
+            position: absolute;
+            left: 0;
+        }
+
+        .question-type {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 6px;
+            border: 2px solid #dee2e6;
+        }
+
+        .question-type h4 {
+            color: #2c3e50;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .question-type h4::before {
+            content: '📝';
+            margin-right: 0.5rem;
+        }
+
+        .strategy-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .strategy-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .strategy-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        .example-box {
+            background-color: #f0f8ff;
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            border: 1px dashed #3498db;
+        }
+
+        .point-value {
+            display: inline-block;
+            background-color: #e74c3c;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-left: 0.5rem;
+        }
+
+        .emoji-icon {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        th {
+            background-color: #2c3e50;
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .highlight {
+            background-color: #fff3cd;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .subsection {
+            margin: 2rem 0;
+        }
+
+        .subsection h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #3498db;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .nav ul {
+                flex-direction: column;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .section-content {
+                padding: 1rem;
+            }
+
+            .flow-step {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .step-number {
+                margin-bottom: 1rem;
+            }
+
+            .keyword-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: #3498db;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .back-to-top:hover {
+            background-color: #2980b9;
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🎌 JLPT N3 Complete Strategy Guide</h1>
+        <p class="subtitle">Master the exam with proven techniques and elimination strategies</p>
+        
+        <div class="score-info">
+            <h3>Passing Requirements</h3>
+            <div class="score-grid">
+                <div class="score-item">
+                    <strong>95+</strong>
+                    <span>Total Score</span>
+                </div>
+                <div class="score-item">
+                    <strong>19+</strong>
+                    <span>Vocab/Grammar</span>
+                </div>
+                <div class="score-item">
+                    <strong>19+</strong>
+                    <span>Reading</span>
+                </div>
+                <div class="score-item">
+                    <strong>19+</strong>
+                    <span>Listening</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="nav">
+        <ul>
+            <li><a href="#vocabulary">Vocabulary</a></li>
+            <li><a href="#grammar">Grammar</a></li>
+            <li><a href="#reading">Reading</a></li>
+            <li><a href="#listening">Listening</a></li>
+            <li><a href="#general">General Tips</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        
+        <!-- VOCABULARY SECTION -->
+        <div id="vocabulary" class="section">
+            <div class="section-header">
+                <h2>📚 Language Knowledge (Vocabulary - 文字・語彙)</h2>
+                <p class="meta">35 questions • 35 points total</p>
+            </div>
+            <div class="section-content">
+                
+                <div class="subsection">
+                    <h3>問題1: Kanji Reading <span class="point-value">8 pts</span></h3>
+                    
+                    <div class="flow-diagram">
+                        <div class="flow-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <div class="step-title">Read the full sentence</div>
+                                Understand the context before looking at options
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <div class="step-title">Check grammar pattern compatibility</div>
+                                Eliminate readings that don't fit the verb/noun pattern
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <div class="step-title">Verify meaning in context</div>
+                                Does the reading make sense with the sentence meaning?
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tip-box">
+                        <h4>✓ Quick Elimination Tips</h4>
+                        <ul class="strategy-list">
+                            <li>Watch for kun-yomi vs on-yomi traps (生: なま, い, う, せい)</li>
+                            <li>Check compound words - both kanji readings must match</li>
+                            <li>Cross out readings that change the sentence's basic meaning</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>問題2: Orthography <span class="point-value">6 pts</span></h3>
+                    
+                    <div class="tip-box">
+                        <h4>✓ Winning Strategy</h4>
+                        <ul class="strategy-list">
+                            <li>Eliminate options with wrong kanji for the context</li>
+                            <li>Check particle compatibility (は vs わ, を vs お)</li>
+                            <li>Watch okurigana (送り仮名) - kana after kanji</li>
+                        </ul>
+                    </div>
+
+                    <div class="warning-box">
+                        <h4>⚠️ Common Traps</h4>
+                        <div class="trap-item">Similar-looking kanji: 待つ (wait) vs 持つ (hold)</div>
+                        <div class="trap-item">Similar-looking kanji: 買う (buy) vs 貝 (shellfish)</div>
+                        <div class="trap-item">Particles: じゃ vs では, すぐ vs 直ぐ</div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>問題3: Context-Defined Expressions <span class="point-value">11 pts</span></h3>
+                    
+                    <div class="flow-diagram">
+                        <div class="flow-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <div class="step-title">Read complete sentence for tone</div>
+                                Identify: formal/casual, positive/negative
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <div class="step-title">Eliminate grammatically incompatible words</div>
+                                Check verb types, adjective forms, particle requirements
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <div class="step-title">Check natural collocations</div>
+                                Some words naturally go together (e.g., 注意を払う)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>問題4: Paraphrasing <span class="point-value">5 pts</span></h3>
+                    
+                    <div class="tip-box">
+                        <h4>✓ Find Synonyms Strategy</h4>
+                        <ul class="strategy-list">
+                            <li>Identify core meaning AND nuance of underlined word</li>
+                            <li>Eliminate options that change sentence meaning</li>
+                            <li>Check formality levels match (casual ↔ polite)</li>
+                            <li>Beware false friends (similar-looking, different meaning)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>問題5: Usage <span class="point-value">5 pts</span></h3>
+                    
+                    <div class="flow-diagram">
+                        <div class="flow-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <div class="step-title">Scan all four sentences quickly</div>
+                                Get overview of contexts
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <div class="step-title">Eliminate impossible combinations</div>
+                                Wrong grammar, wrong particles, unnatural usage
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <div class="step-title">Verify the remaining option</div>
+                                Check it's grammatically correct and natural
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- GRAMMAR SECTION -->
+        <div id="grammar" class="section">
+            <div class="section-header">
+                <h2>📖 Language Knowledge (Grammar - 文法)</h2>
+                <p class="meta">23 questions • 23 points total</p>
+            </div>
+            <div class="section-content">
+                
+                <div class="subsection">
+                    <h3>問題1: Grammatical Form <span class="point-value">13 pts</span></h3>
+                    
+                    <div class="flow-diagram">
+                        <div class="flow-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <div class="step-title">Identify tense and aspect</div>
+                                Past? Present? Future? Completed? Ongoing?
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <div class="step-title">Check before and after the blank</div>
+                                What particles? What verb forms? Fixed expressions?
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <div class="step-title">Eliminate mismatched forms</div>
+                                Wrong tense, wrong formality, impossible combinations
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <div class="step-title">Verify with natural Japanese feeling</div>
+                                Does it sound right? Trust your intuition
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="warning-box">
+                        <h4>⚠️ Common Grammar Traps</h4>
+                        <div class="trap-item">～ている (ongoing) vs ～てある (state of completion)</div>
+                        <div class="trap-item">～ば vs ～たら vs ～と (different conditional nuances)</div>
+                        <div class="trap-item">～てしまう adds regret/completion</div>
+                        <div class="trap-item">～ておく shows preparation</div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>問題2: Sentence Composition <span class="point-value">5 pts</span></h3>
+                    
+                    <div class="flow-diagram">
+                        <div class="flow-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <div class="step-title">Find subject and main verb</div>
+                                Identify the core of the sentence first
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <div class="step-title">Identify particles and their connections</div>
+                                は, が, を, に, で - what do they connect?
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <div class="step-title">Look for fixed grammar patterns</div>
+                                ～ことができる, ～ようになる, etc.
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <div class="step-title">Check what fits with ★</div>
+                                Test each option in the ★ position
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tip-box">
+                        <h4>✓ Word Order Pattern</h4>
+                        <p>Typical Japanese structure: <span class="highlight">Subject は/が → Time/Location → Object を → Verb</span></p>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>問題3: Text Grammar <span class="point-value">5 pts</span></h3>
+                    
+                    <div class="keyword-box">
+                        <h4>Key Connectives to Know</h4>
+                        <table>
+                            <tr>
+                                <th>Function</th>
+                                <th>Keywords</th>
+                            </tr>
+                            <tr>
+                                <td><strong>Contrast</strong></td>
+                                <td>しかし, でも, ところが, が</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Addition</strong></td>
+                                <td>そして, また, それに, さらに</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Reason/Result</strong></td>
+                                <td>だから, そのため, その結果, したがって</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Example</strong></td>
+                                <td>たとえば, 例を挙げると</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="flow-diagram">
+                        <div class="flow-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <div class="step-title">Read before and after the blank</div>
+                                Get context from both sentences
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <div class="step-title">Identify logical relationship</div>
+                                Contrast? Addition? Cause? Example?
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <div class="step-title">Eliminate wrong logic</div>
+                                Cross out connectives that reverse the meaning
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- READING SECTION -->
+        <div id="reading" class="section">
+            <div class="section-header">
+                <h2>📄 Reading (読解)</h2>
+                <p class="meta">16 questions • 60 points total • 70 minutes</p>
+            </div>
+            <div class="section-content">
+                
+                <div class="subsection">
+                    <h3>問題4: Short Passages <span class="point-value">12 pts</span></h3>
+                    
+                    <div class="flow-diagram">
+                        <div class="flow-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <div class="step-title">Read Question FIRST</div>
+                                Know exactly what information to hunt for
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <div class="step-title">Skim for structure words</div>
+                                まず, 次に, ただし, なお, 以上
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <div class="step-title">Scan for specific information</div>
+                                Dates, times, numbers, locations, names
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <div class="step-title">Verify with answer options</div>
+                                Check conditions, exceptions, restrictions
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="keyword-box">
+                        <h4>🔍 Critical Keywords for Scanning</h4>
+                        <div class="keyword-list">
+                            <div class="keyword">つまり (in other words)</div>
+                            <div class="keyword">特に (especially)</div>
+                            <div class="keyword">ただし (however/but)</div>
+                            <div class="keyword">なお (furthermore)</div>
+                            <div class="keyword">～の場合 (in case of)</div>
+                            <div class="keyword">～を除く (excluding)</div>
+                            <div class="keyword">～以外 (except for)</div>
+                            <div class="keyword">～によって (depending on)</div>
+                            <div class="keyword">締め切り (deadline)</div>
+                            <div class="keyword">事前に (in advance)</div>
+                            <div class="keyword">当日 (on the day)</div>
+                            <div class="keyword">必要なもの (necessary items)</div>
+                        </div>
+                    </div>
+
+                    <div class="warning-box">
+                        <h4>⚠️ Wrong Answer Patterns</h4>
+                        <div class="trap-item"><strong>情報の混同:</strong> Mixes details from different parts</div>
+                        <div class="trap-item"><strong>過剰な情報:</strong> Includes details never mentioned</div>
+                        <div class="trap-item"><strong>反対の意味:</strong> Text says 不要 → answer says 必要</div>
+                        <div class="trap-item"><strong>条件の無視:</strong> Ignores "if" conditions or restrictions</div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>問題5: Medium Passages <span class="point-value">24 pts - HIGHEST!</span></h3>
+                    
+                    <div class="tip-box">
+                        <h4>✓ Priority Strategy - Spend Most Time Here!</h4>
+                        <p>This section is worth 24 points - almost half of reading section. Master this!</p>
+                    </div>
+
+                    <div class="flow-diagram">
+                        <div class="flow-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <div class="step-title">Preview questions before reading</div>
+                                Note what each question asks: detail? main idea? reason?
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <div class="step-title">Read actively - mark as you go</div>
+                                [ ] around logical connectors, underline key content
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <div class="step-title">Identify topic sentences</div>
+                                Usually first or last sentence of paragraphs
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <div class="step-title">Match answers to specific text locations</div>
+                                Don't rely on memory - verify each answer against text
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="keyword-box">
+                        <h4>🔴 CONTRAST Words - Very Important!</h4>
+                        <p><strong>The real answer often comes AFTER these words!</strong></p>
+                        <div class="keyword-list">
+                            <div class="keyword">しかし (however)</div>
+                            <div class="keyword">でも (but)</div>
+                            <div class="keyword">が (but)</div>
+                            <div class="keyword">けれども (although)</div>
+                            <div class="keyword">ところが (unexpectedly)</div>
+                            <div class="keyword">それに対して (in contrast)</div>
+                            <div class="keyword">一方（で） (on the other hand)</div>
+                            <div class="keyword">逆に (conversely)</div>
+                            <div class="keyword">むしろ (rather)</div>
+                        </div>
+                    </div>
+
+                    <div class="keyword-box">
+                        <h4>🟠 RESTATEMENT Words - Often Contains Answer!</h4>
+                        <div class="keyword-list">
+                            <div class="keyword">つまり (in other words)</div>
+                            <div class="keyword">要するに (in short)</div>
+                            <div class="keyword">すなわち (that is)</div>
+                            <div class="keyword">～ということだ (that means)</div>
+                        </div>
+                    </div>
+
+                    <div class="keyword-box">
+                        <h4>🔵 REASON/CAUSE Words</h4>
+                        <div class="keyword-list">
+                            <div class="keyword">なぜなら (because)</div>
+                            <div class="keyword">というのは (the reason is)</div>
+                            <div class="keyword">～ため（に） (because/for)</div>
+                            <div class="keyword">～ので (because)</div>
+                            <div class="keyword">～から (because)</div>
+                            <div class="keyword">その理由は (the reason is)</div>
+                        </div>
+                    </div>
+
+                    <div class="question-type">
+                        <h4>Question Type 1: Main Idea (主旨・要旨)</h4>
+                        <p><strong>Format:</strong> "この文章で一番言いたいことは何か"</p>
+                        <ul class="strategy-list">
+                            <li>Main idea often in first or last paragraph</li>
+                            <li>Look for: つまり, 要するに, ～と言える</li>
+                            <li>Eliminate: too narrow, too broad, not in conclusion</li>
+                        </ul>
+                    </div>
+
+                    <div class="question-type">
+                        <h4>Question Type 2: Reason (理由)</h4>
+                        <p><strong>Format:</strong> "なぜ～か" / "どうして～か"</p>
+                        <ul class="strategy-list">
+                            <li>Scan for: から, ので, ため, なぜなら</li>
+                            <li>Pattern: [statement]。それは～からだ</li>
+                            <li>Watch: ～によって (due to), ～のせいで (because of)</li>
+                        </ul>
+                    </div>
+
+                    <div class="question-type">
+                        <h4>Question Type 3: Demonstrative Reference (指示語)</h4>
+                        <p><strong>Format:</strong> "「それ」は何を指しているか"</p>
+                        <ul class="strategy-list">
+                            <li>Answer is usually 1-2 sentences BEFORE the word</li>
+                            <li>Re-read with your answer plugged in to verify</li>
+                            <li>Common: これ/それ/あれ, この/その/あの, そのこと</li>
+                        </ul>
+                    </div>
+
+                    <div class="question-type">
+                        <h4>Question Type 4: Content Matching (内容一致)</h4>
+                        <p><strong>Format:</strong> "本文の内容と合っているものはどれか"</p>
+                        <div class="warning-box">
+                            <h4>⚠️ Common Tricks</h4>
+                            <div class="trap-item">Degree exaggeration: 時々 → いつも (sometimes → always)</div>
+                            <div class="trap-item">Tense change: past → present, present → future</div>
+                            <div class="trap-item">Subject switch: "A thinks..." → "Author thinks..."</div>
+                            <div class="trap-item">Partial negation: 必ずしも～ない → ～ない</div>
+                        </div>
+                    </div>
+
+                    <div class="question-type">
+                        <h4>Question Type 5: Author's Opinion (筆者の意見)</h4>
+                        <p><strong>Format:</strong> "筆者はどう考えているか"</p>
+                        <ul class="strategy-list">
+                            <li><strong>Author's view:</strong> ～と思う, ～べきだ, ～だろう</li>
+                            <li><strong>General view:</strong> ～と言われている, ～人が多い</li>
+                            <li><strong>Others' view:</strong> ～という人もいる</li>
+                            <li>Contrast markers (しかし) often introduce author's real opinion</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>問題6: Information Retrieval <span class="point-value">16 pts</span></h3>
+                    
+                    <div class="tip-box">
+                        <h4>✓ Speed Reading - DON'T Read Everything!</h4>
+                        <p>This is a <strong>scanning exercise</strong>, not a reading comprehension test.</p>
+                    </div>
+
+                    <div class="flow-diagram">
+                        <div class="flow-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <div class="step-title">Read question → identify exact info needed</div>
+                                Price? Date? Who? What conditions?
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <div class="step-title">Scan using visual cues</div>
+                                Numbers, katakana, headers, bullet points •
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <div class="step-title">Read ONLY relevant section carefully</div>
+                                Don't waste time on unrelated information
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <div class="step-title">Verify ALL conditions are met</div>
+                                Check for: ただし, ～を除く, ～以外, ※注意
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="keyword-box">
+                        <h4>High-Frequency Information Keywords</h4>
+                        <table>
+                            <tr>
+                                <th>Category</th>
+                                <th>Keywords</th>
+                            </tr>
+                            <tr>
+                                <td><strong>Eligibility</strong></td>
+                                <td>対象, ～の方, 条件, 資格, 年齢制限, 定員, 先着順</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Costs</strong></td>
+                                <td>料金, 費用, 無料, 有料, 割引, 追加料金, 含まれる</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Application</strong></td>
+                                <td>申し込み, 予約, 事前申込, 当日申込, 締め切り, 必着</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Restrictions</strong></td>
+                                <td>禁止, ～できません, ～してはいけない, ～を除く, ただし, なお, ※</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Contact</strong></td>
+                                <td>問い合わせ先, お問い合わせ, 連絡先, 電話番号, 担当</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>問題7: Long Passages <span class="point-value">8 pts</span></h3>
+                    
+                    <div class="flow-diagram">
+                        <div class="flow-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <div class="step-title">Identify structure: Introduction → Body → Conclusion</div>
+                                近年、最近 (intro) → 第一に、第二に (body) → このように (conclusion)
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <div class="step-title">Focus on first and last paragraphs</div>
+                                Main idea and author's conclusion are here
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <div class="step-title">Track author's argument flow</div>
+                                Background → Problem → Evidence → Conclusion
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tip-box">
+                        <h4>✓ Certainty Level Keywords</h4>
+                        <table>
+                            <tr>
+                                <th>Certain</th>
+                                <th>Uncertain</th>
+                            </tr>
+                            <tr>
+                                <td>確実に, 必ず, ～に違いない, 絶対に</td>
+                                <td>かもしれない, おそらく, ～だろう, ～可能性がある</td>
+                            </tr>
+                            <tr>
+                                <th>Universal</th>
+                                <th>Particular</th>
+                            </tr>
+                            <tr>
+                                <td>すべて, 常に, だれでも, どこでも</td>
+                                <td>いくつか, 時々, 特定の人, ある場所</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- LISTENING SECTION -->
+        <div id="listening" class="section">
+            <div class="section-header">
+                <h2>🎧 Listening (聴解)</h2>
+                <p class="meta">28 questions • 62 points total</p>
+            </div>
+            <div class="section-content">
+                
+                <div class="subsection">
+                    <h3>問題1: Task-Based Comprehension <span class="point-value">18 pts</span></h3>
+                    
+                    <div class="tip-box">
+                        <h4>✓ Pre-Listening Strategy</h4>
+                        <p><strong>During example/instruction time:</strong></p>
+                        <ul class="strategy-list">
+                            <li>Look at ALL 4 illustrations/options</li>
+                            <li>Note differences between them</li>
+                            <li>Predict what to listen for: numbers? actions? locations? objects?</li>
+                        </ul>
+                    </div>
+
+                    <div class="warning-box">
+                        <h4>⚠️ MOST IMPORTANT PATTERN: Rejections & Changes!</h4>
+                        <p><strong>First suggestion is often REJECTED!</strong></p>
+                        <div class="example-box">
+A: これにしましょうか。(Let's go with this?)
+B: ちょっと～。それより、こっちのほうがいいんじゃない？
+   (Well... Rather, isn't this one better?)
+A: あ、そうですね。じゃ、それにします。
+   (Oh, you're right. Then, let's go with that.)
+
+→ Answer: B's suggestion, NOT A's initial one!
+                        </div>
+                    </div>
+
+                    <div class="keyword-box">
+                        <h4>🚨 Rejection Phrases - Listen Carefully!</h4>
+                        <div class="keyword-list">
+                            <div class="keyword">ちょっと～ (soft rejection)</div>
+                            <div class="keyword">でも～ (but...)</div>
+                            <div class="keyword">いや～ (no/well...)</div>
+                            <div class="keyword">それより～ (rather than that)</div>
+                            <div class="keyword">～じゃなくて (not ~, but...)</div>
+                            <div class="keyword">～のほうがいい (~ is better)</div>
+                            <div class="keyword">やっぱり～ (after all - change)</div>
+                        </div>
+                    </div>
+
+                    <div class="keyword-box">
+                        <h4>✅ Decision Markers - Final Answer Usually Follows!</h4>
+                        <div class="keyword-list">
+                            <div class="keyword">じゃ、～にします (then, let's go with)</div>
+                            <div class="keyword">～ことにします (decide on)</div>
+                            <div class="keyword">それでお願いします (please go with that)</div>
+                            <div class="keyword">～ということで (so, we'll go with)</div>
+                            <div class="keyword">分かりました、～ (understood, ~)</div>
+                            <div class="keyword">では、～で (then, with ~)</div>
+                        </div>
+                    </div>
+
+                    <div class="keyword-box">
+                        <h4>Time & Sequence Expressions</h4>
+                        <div class="keyword-list">
+                            <div class="keyword">今すぐ (right now)</div>
+                            <div class="keyword">すぐに (immediately)</div>
+                            <div class="keyword">後で (later)</div>
+                            <div class="keyword">先に (first/beforehand)</div>
+                            <div class="keyword">～前に (before ~)</div>
+                            <div class="keyword">～てから (after doing ~)</div>
+                            <div class="keyword">最初に (first)</div>
+                            <div class="keyword">最後に (last)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>問題2: Point Comprehension <span class="point-value">18 pts</span></h3>
+                    
+                    <div class="tip-box">
+                        <h4>✓ KEY ADVANTAGE: You See The Question First!</h4>
+                        <p>Before audio plays, analyze:</p>
+                        <ul class="strategy-list">
+                            <li>What exactly is being asked? (reason? method? opinion?)</li>
+                            <li>Whose perspective? (man? woman? both?)</li>
+                            <li>Time frame? (past? future? now?)</li>
+                        </ul>
+                    </div>
+
+                    <div class="flow-diagram">
+                        <div class="flow-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <div class="step-title">Read and analyze question before listening</div>
+                                Identify question type and what to focus on
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <div class="step-title">Listen for specific markers</div>
+                                Reasons: から, ので / Opinions: と思う / Methods: によって
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <div class="step-title">Eliminate trap options</div>
+                                Info mentioned but not the answer, wrong speaker, wrong time
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="question-type">
+                        <h4>Reason Questions: なぜ / どうして</h4>
+                        <p><strong>Listen for reason markers:</strong></p>
+                        <div class="keyword-list">
+                            <div class="keyword">～から (because)</div>
+                            <div class="keyword">～ので (because)</div>
+                            <div class="keyword">～ため（に） (for/because)</div>
+                            <div class="keyword">というのは (the thing is)</div>
+                            <div class="keyword">なぜかというと (the reason is)</div>
+                            <div class="keyword">だって (because - casual)</div>
+                            <div class="keyword">～せいで (because of - negative)</div>
+                            <div class="keyword">～おかげで (thanks to - positive)</div>
+                        </div>
+                    </div>
+
+                    <div class="question-type">
+                        <h4>Method Questions: どうやって / どのように</h4>
+                        <p><strong>Listen for method markers:</strong></p>
+                        <div class="keyword-list">
+                            <div class="keyword">方法 (method)</div>
+                            <div class="keyword">やり方 (way of doing)</div>
+                            <div class="keyword">～によって (by means of)</div>
+                            <div class="keyword">～を使って (using)</div>
+                            <div class="keyword">まず～、次に～ (first, then)</div>
+                            <div class="keyword">～すれば (if you do)</div>
+                            <div class="keyword">～たら (if/when)</div>
+                        </div>
+                    </div>
+
+                    <div class="question-type">
+                        <h4>Opinion Questions: どう思って / どう考えて</h4>
+                        <p><strong>Listen for opinion markers:</strong></p>
+                        <div class="keyword-list">
+                            <div class="keyword">～と思う (think that)</div>
+                            <div class="keyword">～と考える (consider)</div>
+                            <div class="keyword">～気がする (feel that)</div>
+                            <div class="keyword">～じゃないか (isn't it that)</div>
+                            <div class="keyword">～べきだ (should)</div>
+                            <div class="keyword">いいと思う (think it's good)</div>
+                        </div>
+                    </div>
+
+                    <div class="warning-box">
+                        <h4>⚠️ Common Traps</h4>
+                        <div class="trap-item"><strong>Topic mentioned ≠ Answer:</strong> Info discussed but not what's asked</div>
+                        <div class="trap-item"><strong>Negative expressions:</strong> ～ない, ～なくてもいい, まだ～ない</div>
+                        <div class="trap-item"><strong>Speaker confusion:</strong> Track who says what!</div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>問題3: Summary Comprehension <span class="point-value">9 pts</span></h3>
+                    
+                    <div class="warning-box">
+                        <h4>⚠️ Special Challenge: No Question Beforehand!</h4>
+                        <p>You must understand the whole conversation first, then answer.</p>
+                    </div>
+
+                    <div class="flow-diagram">
+                        <div class="flow-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <div class="step-title">Phase 1: Identify situation (first 10-15 seconds)</div>
+                                Who? Where? When? What about?
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <div class="step-title">Phase 2: Track main ideas</div>
+                                Listen for: 実は～ (intro), main info, ～ということです (conclusion)
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <div class="step-title">Phase 3: Note key information</div>
+                                Quick memo: numbers, dates, actions, reasons
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tip-box">
+                        <h4>✓ Common Question Patterns</h4>
+                        <ul class="strategy-list">
+                            <li><strong>"何をしなければなりませんか"</strong> → Listen for: ～なければならない, ～必要がある, ～ように言われた</li>
+                            <li><strong>"何をたのみましたか"</strong> → Listen for: ～てください, ～ていただけますか, お願いします</li>
+                            <li><strong>"話の内容と合っているもの"</strong> → Eliminate: reversed meaning, not discussed, confused details</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>問題4: Quick Response <span class="point-value">8 pts</span></h3>
+                    
+                    <div class="flow-diagram">
+                        <div class="flow-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <div class="step-title">Identify speech act function</div>
+                                Request? Offer? Invitation? Apology? Compliment?
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <div class="step-title">Check formality level match</div>
+                                Polite (です・ます) ↔ Casual (普通形)
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <div class="step-title">Verify appropriate reaction</div>
+                                Good news → positive response, Problem → concerned response
+                            </div>
+                        </div>
+                    </div>
+
+                    <table>
+                        <tr>
+                            <th>Function</th>
+                            <th>Prompt Pattern</th>
+                            <th>Good Response</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Request</strong></td>
+                            <td>～てください, ～ていただけますか</td>
+                            <td>はい、いいですよ / 分かりました</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Offer</strong></td>
+                            <td>～ましょうか, 手伝いましょうか</td>
+                            <td>お願いします / ありがとうございます</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Invitation</strong></td>
+                            <td>～ませんか, ～ましょう</td>
+                            <td>いいですね (accept) / すみません、ちょっと～ (decline)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Apology</strong></td>
+                            <td>すみません, 申し訳ありません</td>
+                            <td>いいですよ / 気にしないでください</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Compliment</strong></td>
+                            <td>上手ですね, 似合いますね</td>
+                            <td>ありがとうございます / そうですか</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="subsection">
+                    <h3>問題5: Integrated Comprehension <span class="point-value">9 pts</span></h3>
+                    
+                    <div class="tip-box">
+                        <h4>✓ Note-Taking Template</h4>
+                        <div class="example-box">
+Topic: _________________
+Numbers/Times: _________________
+Key points:
+1. _________________
+2. _________________
+3. _________________
+Decision/Result: _________________
+                        </div>
+                    </div>
+
+                    <div class="tip-box">
+                        <h4>✓ Question Pattern Recognition</h4>
+                        <p>Questions build on each other:</p>
+                        <ul class="strategy-list">
+                            <li><strong>Q1:</strong> Often basic info (where/when)</li>
+                            <li><strong>Q2:</strong> Often details (numbers/specific content)</li>
+                            <li><strong>Q3:</strong> Often reasons/final decision</li>
+                        </ul>
+                    </div>
+
+                    <div class="keyword-box">
+                        <h4>Topic Change Markers</h4>
+                        <div class="keyword-list">
+                            <div class="keyword">ところで (by the way)</div>
+                            <div class="keyword">そういえば (speaking of which)</div>
+                            <div class="keyword">それはそうと (anyway)</div>
+                            <div class="keyword">じゃ、次に～ (well, next)</div>
+                            <div class="keyword">それから (and then/also)</div>
+                        </div>
+                    </div>
+
+                    <div class="warning-box">
+                        <h4>⚠️ Numbers Often Change!</h4>
+                        <div class="example-box">
+最初 (initially): "10人"
+変更 (change): "でも、5人増えて"
+最終 (final): "15人" ← This is the answer!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <h4>🎧 Final Listening Tips</h4>
+                    <ul class="strategy-list">
+                        <li><strong>Before each section:</strong> Take a deep breath, clear your mind</li>
+                        <li><strong>During listening:</strong> Don't panic if you miss something</li>
+                        <li><strong>The 3-Second Rule:</strong> If you miss a question, LET IT GO immediately</li>
+                        <li><strong>Trust your first impression:</strong> Your initial answer is usually correct</li>
+                        <li><strong>Never dwell on the past:</strong> Focus on the NEXT question</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- GENERAL TIPS SECTION -->
+        <div id="general" class="section">
+            <div class="section-header">
+                <h2>🎯 General Test-Taking Strategies</h2>
+                <p class="meta">Universal techniques for maximizing your score</p>
+            </div>
+            <div class="section-content">
+                
+                <div class="subsection">
+                    <h3>Time Management</h3>
+                    
+                    <table>
+                        <tr>
+                            <th>Section</th>
+                            <th>Time</th>
+                            <th>Strategy</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Vocabulary/Grammar</strong></td>
+                            <td>105 min</td>
+                            <td>~1 min per question. If stuck, mark & move on</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Reading</strong></td>
+                            <td>70 min</td>
+                            <td>問題5 (24 pts) - most time. Save 5-10 min to review</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Listening</strong></td>
+                            <td>Fixed</td>
+                            <td>Can't control time. Stay focused, let go of mistakes</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="subsection">
+                    <h3>Universal Elimination Techniques</h3>
+                    
+                    <div class="flow-diagram">
+                        <div class="flow-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <div class="step-title">Eliminate grammatically impossible answers</div>
+                                Wrong tense, wrong particles, incompatible forms
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <div class="step-title">Remove extreme answers</div>
+                                Always, never, must, all, none, everyone
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <div class="step-title">Cross out unsupported information</div>
+                                Details never mentioned in text/audio
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <div class="step-title">Watch for meaning reversals</div>
+                                Positive ↔ Negative, Required ↔ Prohibited
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <div class="step-title">When two answers are similar...</div>
+                                The DIFFERENCE between them is the key to finding the right answer
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>Universal Trap Patterns</h3>
+                    
+                    <div class="warning-box">
+                        <h4>⚠️ Trap 1: Partial Information (部分的な情報)</h4>
+                        <p>Answer contains some true info but missing key qualifiers</p>
+                        <div class="example-box">
+Text: "normally available"
+Wrong answer: "always available"
+                        </div>
+                    </div>
+
+                    <div class="warning-box">
+                        <h4>⚠️ Trap 2: Timing Confusion (時間のずれ)</h4>
+                        <p>Past → Present → Future confusion</p>
+                        <div class="example-box">
+Text: "used to do"
+Wrong answer: "still does"
+                        </div>
+                    </div>
+
+                    <div class="warning-box">
+                        <h4>⚠️ Trap 3: Scope Change (範囲の変更)</h4>
+                        <p>Some → All, Usually → Always, Many → Everyone</p>
+                    </div>
+
+                    <div class="warning-box">
+                        <h4>⚠️ Trap 4: Conditionality (条件の無視)</h4>
+                        <p>Text includes "if" condition → wrong answer states as fact</p>
+                        <div class="example-box">
+Text: "if weather is good..."
+Wrong: "will definitely..."
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>Sectional Pass Mark Strategy</h3>
+                    
+                    <div class="tip-box">
+                        <h4>🎯 CRITICAL: You need ≥19 points in EACH section!</h4>
+                        <p>Even if you score 100+ total, you FAIL if any section is below 19.</p>
+                    </div>
+
+                    <div class="flow-diagram">
+                        <div class="flow-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <div class="step-title">Identify your weakest section during study</div>
+                                Track your practice test scores by section
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <div class="step-title">In the exam: secure sectional pass first</div>
+                                Make sure you get 19+ in each section before maximizing
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <div class="step-title">Then maximize points in stronger sections</div>
+                                Once all sections are safe, go for total score
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <div class="step-title">Never skip entire question types</div>
+                                Even guessing gives you a chance at points
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>Guessing Strategy</h3>
+                    
+                    <div class="tip-box">
+                        <h4>✓ When You Must Guess</h4>
+                        <ul class="strategy-list">
+                            <li><strong>NEVER leave blanks</strong> - you have 25% chance minimum</li>
+                            <li><strong>For vocabulary:</strong> Choose the most common/neutral word</li>
+                            <li><strong>For grammar:</strong> Trust what sounds natural in Japanese</li>
+                            <li><strong>For reading:</strong> Choose answer closest to passage content</li>
+                            <li><strong>For listening:</strong> Choose most contextually appropriate response</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>Pattern Recognition Quick Reference</h3>
+                    
+                    <table>
+                        <tr>
+                            <th>Pattern</th>
+                            <th>What It Means</th>
+                            <th>Action</th>
+                        </tr>
+                        <tr>
+                            <td>～そうです (hearsay)</td>
+                            <td>I heard that...</td>
+                            <td>Reported information</td>
+                        </tr>
+                        <tr>
+                            <td>～そうです (appearance)</td>
+                            <td>It looks like...</td>
+                            <td>Visual observation</td>
+                        </tr>
+                        <tr>
+                            <td>～てしまう</td>
+                            <td>Regret or completion</td>
+                            <td>Action completed (often regrettably)</td>
+                        </tr>
+                        <tr>
+                            <td>～ておく</td>
+                            <td>Preparation</td>
+                            <td>Do something in advance</td>
+                        </tr>
+                        <tr>
+                            <td>Location に</td>
+                            <td>Existence, destination</td>
+                            <td>ある/いる, 行く/来る</td>
+                        </tr>
+                        <tr>
+                            <td>Location で</td>
+                            <td>Action location</td>
+                            <td>Where action happens</td>
+                        </tr>
+                        <tr>
+                            <td>Time に</td>
+                            <td>Specific point</td>
+                            <td>3時に (at 3 o'clock)</td>
+                        </tr>
+                        <tr>
+                            <td>Time で</td>
+                            <td>Duration/limit</td>
+                            <td>1時間で (within 1 hour)</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="subsection">
+                    <h3>The Night Before</h3>
+                    
+                    <div class="tip-box">
+                        <h4>✓ Final Preparation</h4>
+                        <ul class="strategy-list">
+                            <li>Review grammar patterns list (don't cram new material)</li>
+                            <li>Practice listening at normal speed for 30 minutes</li>
+                            <li>Review this strategy guide one more time</li>
+                            <li><strong>Get 8 hours of sleep</strong> - rest is more important than cramming</li>
+                            <li>Prepare what you need: pencils, eraser, watch, admission ticket</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>During The Exam</h3>
+                    
+                    <div class="flow-diagram">
+                        <div class="flow-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <div class="step-title">Read all instructions carefully</div>
+                                Don't rush - make sure you understand what's being asked
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <div class="step-title">Write clearly on answer sheet</div>
+                                Fill bubbles completely, erase mistakes fully
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <div class="step-title">Stay calm throughout</div>
+                                One bad section doesn't mean failure - keep going
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <div class="step-title">Use ALL available time</div>
+                                Review marked questions, check answer sheet
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <div class="step-title">Trust your preparation</div>
+                                You've studied these strategies - use them confidently
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tip-box" style="background-color: #e8f8f5; border-left-color: #27ae60; padding: 2rem;">
+                    <h3 style="color: #27ae60; font-size: 1.5rem; margin-bottom: 1rem;">🎉 Final Encouragement</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.8;">
+                        <strong>Remember:</strong> You need <span class="highlight">95/180 total</span> AND <span class="highlight">≥19 in each section</span>. 
+                        That's only 53% overall - very achievable!
+                    </p>
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-top: 1rem;">
+                        Balance is the key. Don't aim for perfection - aim for consistency across all sections. 
+                        Use these elimination strategies to maximize your chances on every single question.
+                    </p>
+                    <p style="font-size: 1.2rem; font-weight: bold; margin-top: 1.5rem; color: #27ae60;">
+                        頑張ってください！(Good luck! You've got this!)
+                    </p>
+                </div>
+
+                <div class="subsection">
+                    <h3>Quick Reference: Priority Order</h3>
+                    
+                    <div class="keyword-box" style="background-color: #fff3cd; border-left-color: #f39c12;">
+                        <h4 style="color: #e67e22;">📊 Point Value Priority</h4>
+                        <ol style="line-height: 2; font-size: 1.1rem; padding-left: 2rem;">
+                            <li><strong>Reading 問題5:</strong> 24 points - HIGHEST! Spend most time here</li>
+                            <li><strong>Listening 問題1 & 問題2:</strong> 18 points each - Focus intensely</li>
+                            <li><strong>Reading 問題6:</strong> 16 points - Use speed scanning</li>
+                            <li><strong>Grammar 問題1:</strong> 13 points - Know your patterns</li>
+                            <li><strong>Vocabulary 問題3:</strong> 11 points - Context is key</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>Common Question Words Reference</h3>
+                    
+                    <table>
+                        <tr>
+                            <th>Japanese</th>
+                            <th>English</th>
+                            <th>What to Look/Listen For</th>
+                        </tr>
+                        <tr>
+                            <td>なぜ / どうして</td>
+                            <td>Why</td>
+                            <td>から, ので, ため, なぜなら</td>
+                        </tr>
+                        <tr>
+                            <td>いつ</td>
+                            <td>When</td>
+                            <td>Time expressions, dates</td>
+                        </tr>
+                        <tr>
+                            <td>どこ</td>
+                            <td>Where</td>
+                            <td>Location markers, places</td>
+                        </tr>
+                        <tr>
+                            <td>だれ / どなた</td>
+                            <td>Who</td>
+                            <td>People, names, roles</td>
+                        </tr>
+                        <tr>
+                            <td>何 (なに/なん)</td>
+                            <td>What</td>
+                            <td>Objects, actions, topics</td>
+                        </tr>
+                        <tr>
+                            <td>どう / どのように</td>
+                            <td>How</td>
+                            <td>Methods, procedures, 方法</td>
+                        </tr>
+                        <tr>
+                            <td>どれ / どちら</td>
+                            <td>Which</td>
+                            <td>Selection, choices</td>
+                        </tr>
+                        <tr>
+                            <td>いくら</td>
+                            <td>How much</td>
+                            <td>Prices, costs, 料金</td>
+                        </tr>
+                        <tr>
+                            <td>いくつ / 何～</td>
+                            <td>How many</td>
+                            <td>Quantities, numbers</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="example-box" style="background-color: #f8f9fa; border: 2px solid #2c3e50; padding: 2rem; margin-top: 2rem;">
+                    <h3 style="color: #2c3e50; margin-bottom: 1rem;">📋 Exam Day Checklist</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                        <div>
+                            <h4 style="color: #3498db; margin-bottom: 0.5rem;">Bring:</h4>
+                            <ul style="line-height: 2;">
+                                <li>✓ Admission ticket</li>
+                                <li>✓ Photo ID</li>
+                                <li>✓ Multiple pencils (HB)</li>
+                                <li>✓ Eraser</li>
+                                <li>✓ Watch (no smart watch)</li>
+                                <li>✓ Water bottle</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 style="color: #e74c3c; margin-bottom: 0.5rem;">Don't Bring:</h4>
+                            <ul style="line-height: 2;">
+                                <li>✗ Phone (or turn completely off)</li>
+                                <li>✗ Dictionary</li>
+                                <li>✗ Notes/study materials</li>
+                                <li>✗ Electronic devices</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 style="color: #27ae60; margin-bottom: 0.5rem;">Remember:</h4>
+                            <ul style="line-height: 2;">
+                                <li>→ Arrive 30 min early</li>
+                                <li>→ Use bathroom before</li>
+                                <li>→ Stay calm and confident</li>
+                                <li>→ Trust your preparation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center; padding: 3rem 2rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 1rem;">🌟 You're Ready!</h2>
+            <p style="font-size: 1.2rem; line-height: 1.8; max-width: 800px; margin: 0 auto;">
+                You've learned the strategies. You know the patterns. You understand the traps. 
+                Now go into that exam room with confidence and show what you can do!
+            </p>
+            <p style="font-size: 1.5rem; font-weight: bold; margin-top: 2rem;">
+                合格を祈ります！🎌
+            </p>
+        </div>
+
+    </div>
+
+    <a href="#" class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
+        ↑
+    </a>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Show/hide back to top button
+        const backToTop = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.style.display = 'flex';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+
+        // Initial hide
+        backToTop.style.display = 'none';
+    </script>
+
+</body>
+</html>
