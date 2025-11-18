@@ -603,6 +603,58 @@
         border-bottom: 2px solid #3498db;
       }
 
+      .audio-player {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 1rem;
+        border-radius: 8px;
+        margin: 1rem 0;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .audio-player-btn {
+        background-color: white;
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .audio-player-btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      .audio-player-btn:active {
+        transform: scale(0.95);
+      }
+
+      .audio-label {
+        color: white;
+        font-weight: 600;
+        font-size: 1rem;
+        flex: 1;
+      }
+
+      .audio-note {
+        background-color: #fff3cd;
+        padding: 0.8rem;
+        border-radius: 4px;
+        border-left: 4px solid #f39c12;
+        margin: 0.5rem 0;
+        font-size: 0.9rem;
+        color: #856404;
+      }
+
       @media (max-width: 768px) {
         .header {
           padding: 3rem 1.5rem 2rem;
@@ -4554,6 +4606,21 @@
                 3) 2 apples + 4 oranges<br />
                 4) 5 apples + 1 orange<br /><br />
 
+                <div class="audio-player">
+                  <button
+                    class="audio-player-btn"
+                    onclick="speakDialogue1()"
+                    title="Play dialogue audio"
+                  >
+                    🔊
+                  </button>
+                  <span class="audio-label">🎧 Click to hear the dialogue</span>
+                </div>
+                <div class="audio-note">
+                  💡 Audio uses browser text-to-speech. Adjust speed in your
+                  browser settings if needed.
+                </div>
+
                 <strong>Dialogue:</strong><br />
                 M:
                 「りんごとオレンジを買いましょう。りんご4つとオレンジ3つはどうですか。」<br />
@@ -5592,6 +5659,16 @@
 
               <strong>1) Prompt:</strong>
               「すみません、この書類、コピーしていただけますか。」<br />
+              <div class="audio-player">
+                <button
+                  class="audio-player-btn"
+                  onclick="speakPrompt(1)"
+                  title="Play audio"
+                >
+                  🔊
+                </button>
+                <span class="audio-label">🎧 Listen to the prompt</span>
+              </div>
               Function: REQUEST (polite) | Options:<br />
               1) どういたしまして。<br />
               2) はい、いいですよ。<br />
@@ -5600,6 +5677,16 @@
               for thanks, 3) is for good news)<br /><br />
 
               <strong>2) Prompt:</strong> 「日本語、上手になりましたね。」<br />
+              <div class="audio-player">
+                <button
+                  class="audio-player-btn"
+                  onclick="speakPrompt(2)"
+                  title="Play audio"
+                >
+                  🔊
+                </button>
+                <span class="audio-label">🎧 Listen to the prompt</span>
+              </div>
               Function: COMPLIMENT (polite) | Options:<br />
               1) ありがとうございます。<br />
               2) どういたしまして。<br />
@@ -5608,6 +5695,16 @@
               responding to thanks, 3) is for requests)<br /><br />
 
               <strong>3) Prompt:</strong> 「映画、一緒に見に行かない？」<br />
+              <div class="audio-player">
+                <button
+                  class="audio-player-btn"
+                  onclick="speakPrompt(3)"
+                  title="Play audio"
+                >
+                  🔊
+                </button>
+                <span class="audio-label">🎧 Listen to the prompt</span>
+              </div>
               Function: INVITATION (casual) | Options:<br />
               1) はい、かしこまりました。<br />
               2) うん、いいね！<br />
@@ -6509,6 +6606,89 @@
 
       // Initial hide
       backToTop.style.display = "none";
+
+      // Text-to-Speech function for listening examples
+      function speakDialogue1() {
+        if ("speechSynthesis" in window) {
+          // Cancel any ongoing speech
+          window.speechSynthesis.cancel();
+
+          const dialogue = [
+            {
+              text: "りんごとオレンジを買いましょう。りんご4つとオレンジ3つはどうですか。",
+              lang: "ja-JP",
+              rate: 0.9,
+            },
+            {
+              text: "ちょっと、オレンジは3つも必要ないですよ。りんごより、オレンジのほうが好きな人が少ないですから。",
+              lang: "ja-JP",
+              rate: 0.9,
+            },
+            {
+              text: "じゃ、オレンジは1つにして、りんごを5つにしましょう。",
+              lang: "ja-JP",
+              rate: 0.9,
+            },
+            {
+              text: "そうですね。それでお願いします。",
+              lang: "ja-JP",
+              rate: 0.9,
+            },
+          ];
+
+          let currentIndex = 0;
+
+          function speakNext() {
+            if (currentIndex < dialogue.length) {
+              const utterance = new SpeechSynthesisUtterance(
+                dialogue[currentIndex].text
+              );
+              utterance.lang = dialogue[currentIndex].lang;
+              utterance.rate = dialogue[currentIndex].rate;
+              utterance.pitch = currentIndex % 2 === 0 ? 0.9 : 1.1; // Alternate pitch for male/female
+
+              utterance.onend = function () {
+                currentIndex++;
+                if (currentIndex < dialogue.length) {
+                  setTimeout(speakNext, 500); // 500ms pause between speakers
+                }
+              };
+
+              window.speechSynthesis.speak(utterance);
+            }
+          }
+
+          speakNext();
+        } else {
+          alert(
+            "Sorry, your browser does not support text-to-speech. Please try Chrome, Edge, or Safari."
+          );
+        }
+      }
+
+      // Text-to-Speech for 問題4 prompts
+      function speakPrompt(promptNum) {
+        if ("speechSynthesis" in window) {
+          window.speechSynthesis.cancel();
+
+          const prompts = {
+            1: "すみません、この書類、コピーしていただけますか。",
+            2: "日本語、上手になりましたね。",
+            3: "映画、一緒に見に行かない？",
+          };
+
+          const utterance = new SpeechSynthesisUtterance(prompts[promptNum]);
+          utterance.lang = "ja-JP";
+          utterance.rate = 0.9;
+          utterance.pitch = 1.0;
+
+          window.speechSynthesis.speak(utterance);
+        } else {
+          alert(
+            "Sorry, your browser does not support text-to-speech. Please try Chrome, Edge, or Safari."
+          );
+        }
+      }
     </script>
   </body>
 </html>
