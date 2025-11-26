@@ -657,6 +657,58 @@
         color: #856404;
       }
 
+      /* Kanji tooltip styles */
+      .kanji {
+        position: relative;
+        display: inline-block;
+        cursor: help;
+        background-color: rgba(9, 255, 0, 0.08);
+        padding: 0.1rem 0.2rem;
+        border-radius: 3px;
+        transition: all 0.2s ease;
+        color: inherit;
+      }
+
+      .kanji:hover {
+        background-color: rgba(52, 152, 219, 0.15);
+      }
+
+      .kanji .reading {
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        bottom: 125%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-5px);
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 0.5rem 0.75rem;
+        border-radius: 8px;
+        font-size: 0.85rem;
+        white-space: nowrap;
+        z-index: 10000;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        pointer-events: none;
+        font-weight: 500;
+      }
+
+      .kanji .reading::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 6px solid transparent;
+        border-top-color: #764ba2;
+      }
+
+      .kanji:hover .reading {
+        visibility: visible;
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+
       @media (max-width: 768px) {
         .header {
           padding: 3rem 1.5rem 2rem;
@@ -6697,6 +6749,511 @@
           );
         }
       }
+
+      // Kanji to Hiragana reading dictionary
+      const kanjiReadings = {
+        問題: "もんだい",
+        文法: "ぶんぽう",
+        語彙: "ごい",
+        読解: "どっかい",
+        聴解: "ちょうかい",
+        試験: "しけん",
+        勉強: "べんきょう",
+        日本語: "にほんご",
+        上手: "じょうず",
+        映画: "えいが",
+        一緒: "いっしょ",
+        書類: "しょるい",
+        漢字: "かんじ",
+        単語: "たんご",
+        会話: "かいわ",
+        文章: "ぶんしょう",
+        例文: "れいぶん",
+        質問: "しつもん",
+        回答: "かいとう",
+        選択: "せんたく",
+        理由: "りゆう",
+        方法: "ほうほう",
+        意見: "いけん",
+        内容: "ないよう",
+        情報: "じょうほう",
+        料金: "りょうきん",
+        申込: "もうしこみ",
+        締切: "しめきり",
+        必要: "ひつよう",
+        場所: "ばしょ",
+        時間: "じかん",
+        今日: "きょう",
+        明日: "あした",
+        昨日: "きのう",
+        午前: "ごぜん",
+        午後: "ごご",
+        今年: "ことし",
+        去年: "きょねん",
+        来年: "らいねん",
+        先月: "せんげつ",
+        来月: "らいげつ",
+        今週: "こんしゅう",
+        先週: "せんしゅう",
+        来週: "らいしゅう",
+        毎日: "まいにち",
+        毎週: "まいしゅう",
+        毎月: "まいつき",
+        毎年: "まいとし",
+        会議: "かいぎ",
+        仕事: "しごと",
+        会社: "かいしゃ",
+        電話: "でんわ",
+        連絡: "れんらく",
+        予定: "よてい",
+        計画: "けいかく",
+        準備: "じゅんび",
+        確認: "かくにん",
+        変更: "へんこう",
+        中止: "ちゅうし",
+        延期: "えんき",
+        決定: "けってい",
+        相談: "そうだん",
+        話: "はなし",
+        説明: "せつめい",
+        理解: "りかい",
+        間違: "まちが",
+        正解: "せいかい",
+        不正解: "ふせいかい",
+        合格: "ごうかく",
+        不合格: "ふごうかく",
+        点数: "てんすう",
+        得点: "とくてん",
+        満点: "まんてん",
+        平均: "へいきん",
+        最高: "さいこう",
+        最低: "さいてい",
+        以上: "いじょう",
+        以下: "いか",
+        未満: "みまん",
+        程度: "ていど",
+        約: "やく",
+        全部: "ぜんぶ",
+        一部: "いちぶ",
+        多数: "たすう",
+        少数: "しょうすう",
+        大勢: "おおぜい",
+        数: "かず",
+        人数: "にんずう",
+        回数: "かいすう",
+        番号: "ばんごう",
+        順番: "じゅんばん",
+        最初: "さいしょ",
+        最後: "さいご",
+        途中: "とちゅう",
+        現在: "げんざい",
+        将来: "しょうらい",
+        過去: "かこ",
+        未来: "みらい",
+        最近: "さいきん",
+        以前: "いぜん",
+        今後: "こんご",
+        次回: "じかい",
+        前回: "ぜんかい",
+        初回: "しょかい",
+        都合: "つごう",
+        事情: "じじょう",
+        状況: "じょうきょう",
+        様子: "ようす",
+        具合: "ぐあい",
+        調子: "ちょうし",
+        気分: "きぶん",
+        気持: "きも",
+        感じ: "かん",
+        思: "おも",
+        考: "かんが",
+        分: "わ",
+        知: "し",
+        覚: "おぼ",
+        忘: "わす",
+        見: "み",
+        聞: "き",
+        読: "よ",
+        書: "か",
+        話: "はな",
+        言: "い",
+        教: "おし",
+        習: "なら",
+        練習: "れんしゅう",
+        復習: "ふくしゅう",
+        予習: "よしゅう",
+        宿題: "しゅくだい",
+        課題: "かだい",
+        問: "と",
+        答: "こた",
+        解答: "かいとう",
+        正: "ただ",
+        間違: "まちが",
+        違: "ちが",
+        似: "に",
+        同: "おな",
+        別: "べつ",
+        他: "ほか",
+        各: "かく",
+        全: "ぜん",
+        半: "はん",
+        両: "りょう",
+        片: "かた",
+        一方: "いっぽう",
+        他方: "たほう",
+        双方: "そうほう",
+        互: "たが",
+        相手: "あいて",
+        自分: "じぶん",
+        本人: "ほんにん",
+        当人: "とうにん",
+        本当: "ほんとう",
+        実際: "じっさい",
+        事実: "じじつ",
+        真実: "しんじつ",
+        正直: "しょうじき",
+        素直: "すなお",
+        真面目: "まじめ",
+        熱心: "ねっしん",
+        一生懸命: "いっしょうけんめい",
+        大切: "たいせつ",
+        重要: "じゅうよう",
+        必死: "ひっし",
+        無理: "むり",
+        可能: "かのう",
+        不可能: "ふかのう",
+        簡単: "かんたん",
+        複雑: "ふくざつ",
+        難: "むずか",
+        易: "やさ",
+        便利: "べんり",
+        不便: "ふべん",
+        安全: "あんぜん",
+        危険: "きけん",
+        安心: "あんしん",
+        心配: "しんぱい",
+        注意: "ちゅうい",
+        用心: "ようじん",
+        警戒: "けいかい",
+        気: "き",
+        元気: "げんき",
+        病気: "びょうき",
+        健康: "けんこう",
+        丈夫: "じょうぶ",
+        弱: "よわ",
+        強: "つよ",
+        力: "ちから",
+        能力: "のうりょく",
+        実力: "じつりょく",
+        努力: "どりょく",
+        頑張: "がんば",
+        成功: "せいこう",
+        失敗: "しっぱい",
+        成績: "せいせき",
+        結果: "けっか",
+        効果: "こうか",
+        影響: "えいきょう",
+        関係: "かんけい",
+        無関係: "むかんけい",
+        原因: "げんいん",
+        理由: "りゆう",
+        目的: "もくてき",
+        目標: "もくひょう",
+        夢: "ゆめ",
+        希望: "きぼう",
+        願: "ねが",
+        期待: "きたい",
+        予想: "よそう",
+        予測: "よそく",
+        想像: "そうぞう",
+        推測: "すいそく",
+        判断: "はんだん",
+        意味: "いみ",
+        価値: "かち",
+        利用: "りよう",
+        使用: "しよう",
+        活用: "かつよう",
+        応用: "おうよう",
+        実用: "じつよう",
+        有用: "ゆうよう",
+        無用: "むよう",
+        用事: "ようじ",
+        用意: "ようい",
+        都合: "つごう",
+        場合: "ばあい",
+        際: "さい",
+        時: "とき",
+        頃: "ころ",
+        間: "あいだ",
+        最中: "さいちゅう",
+        直前: "ちょくぜん",
+        直後: "ちょくご",
+        前: "まえ",
+        後: "あと",
+        先: "さき",
+        次: "つぎ",
+        今: "いま",
+        現: "げん",
+        昔: "むかし",
+        古: "ふる",
+        新: "あたら",
+        旧: "きゅう",
+        初: "はじ",
+        終: "お",
+        始: "はじ",
+        開始: "かいし",
+        終了: "しゅうりょう",
+        完了: "かんりょう",
+        完成: "かんせい",
+        完全: "かんぜん",
+        不完全: "ふかんぜん",
+        途中: "とちゅう",
+        半分: "はんぶん",
+        全体: "ぜんたい",
+        部分: "ぶぶん",
+        一部分: "いちぶぶん",
+        大部分: "だいぶぶん",
+        小部分: "しょうぶぶん",
+        主要: "しゅよう",
+        重点: "じゅうてん",
+        中心: "ちゅうしん",
+        中央: "ちゅうおう",
+        周囲: "しゅうい",
+        付近: "ふきん",
+        近所: "きんじょ",
+        辺: "あた",
+        周: "まわ",
+        回: "まわ",
+        側: "がわ",
+        方: "ほう",
+        向: "む",
+        方向: "ほうこう",
+        方面: "ほうめん",
+        東: "ひがし",
+        西: "にし",
+        南: "みなみ",
+        北: "きた",
+        上: "うえ",
+        下: "した",
+        左: "ひだり",
+        右: "みぎ",
+        中: "なか",
+        内: "うち",
+        外: "そと",
+        表: "おもて",
+        裏: "うら",
+        奥: "おく",
+        手前: "てまえ",
+        向: "む",
+        隣: "となり",
+        反対: "はんたい",
+        逆: "ぎゃく",
+        対: "たい",
+        比較: "ひかく",
+        比: "ひ",
+        割合: "わりあい",
+        率: "りつ",
+        速度: "そくど",
+        速: "はや",
+        遅: "おそ",
+        早: "はや",
+        急: "いそ",
+        緊急: "きんきゅう",
+        突然: "とつぜん",
+        急: "きゅう",
+        自然: "しぜん",
+        当然: "とうぜん",
+        必然: "ひつぜん",
+        偶然: "ぐうぜん",
+        万一: "まんいち",
+        万: "まん",
+        千: "せん",
+        百: "ひゃく",
+        十: "じゅう",
+        数: "すう",
+        多: "おお",
+        少: "すく",
+        何: "なに",
+        幾: "いく",
+        色々: "いろいろ",
+        様々: "さまざま",
+        種類: "しゅるい",
+        種: "しゅ",
+        品: "しな",
+        物: "もの",
+        事: "こと",
+        品物: "しなもの",
+        商品: "しょうひん",
+        製品: "せいひん",
+        作品: "さくひん",
+        品質: "ひんしつ",
+        質: "しつ",
+        性質: "せいしつ",
+        特質: "とくしつ",
+        特徴: "とくちょう",
+        特別: "とくべつ",
+        特: "とく",
+        普通: "ふつう",
+        一般: "いっぱん",
+        通常: "つうじょう",
+        平常: "へいじょう",
+        異常: "いじょう",
+        非常: "ひじょう",
+        常: "つね",
+        普段: "ふだん",
+        平日: "へいじつ",
+        休日: "きゅうじつ",
+        祝日: "しゅくじつ",
+        週末: "しゅうまつ",
+        平: "たい",
+        等: "ひと",
+        同等: "どうとう",
+        平等: "びょうどう",
+        公平: "こうへい",
+        不公平: "ふこうへい",
+        公: "おおやけ",
+        私: "わたくし",
+        個人: "こじん",
+        個別: "こべつ",
+        単独: "たんどく",
+        独立: "どくりつ",
+        自立: "じりつ",
+        依存: "いぞん",
+        頼: "たよ",
+        信頼: "しんらい",
+        信用: "しんよう",
+        信: "しん",
+        疑: "うたが",
+        疑問: "ぎもん",
+        不審: "ふしん",
+        怪: "あや",
+        不思議: "ふしぎ",
+        奇妙: "きみょう",
+        変: "へん",
+        普: "ふ",
+        珍: "めずら",
+        稀: "まれ",
+        珍: "ちん",
+      };
+
+      // Function to add furigana tooltips to kanji
+      function addKanjiTooltips() {
+        // Select all text nodes in the document
+        const walker = document.createTreeWalker(
+          document.body,
+          NodeFilter.SHOW_TEXT,
+          {
+            acceptNode: function (node) {
+              // Skip script and style elements
+              if (
+                node.parentElement.tagName === "SCRIPT" ||
+                node.parentElement.tagName === "STYLE" ||
+                node.parentElement.classList.contains("kanji")
+              ) {
+                return NodeFilter.FILTER_REJECT;
+              }
+              // Only accept nodes with Japanese characters
+              if (/[\u4E00-\u9FAF]/.test(node.textContent)) {
+                return NodeFilter.FILTER_ACCEPT;
+              }
+              return NodeFilter.FILTER_REJECT;
+            },
+          }
+        );
+
+        const nodes = [];
+        let node;
+        while ((node = walker.nextNode())) {
+          nodes.push(node);
+        }
+
+        // Process each text node
+        nodes.forEach((textNode) => {
+          const text = textNode.textContent;
+          const fragment = document.createDocumentFragment();
+          let lastIndex = 0;
+
+          // Sort kanji readings by length (longest first) for better matching
+          const sortedReadings = Object.keys(kanjiReadings).sort(
+            (a, b) => b.length - a.length
+          );
+
+          let processedText = text;
+          const replacements = [];
+
+          // Find all kanji matches
+          sortedReadings.forEach((kanji) => {
+            const regex = new RegExp(kanji, "g");
+            let match;
+            while ((match = regex.exec(text)) !== null) {
+              replacements.push({
+                start: match.index,
+                end: match.index + kanji.length,
+                kanji: kanji,
+                reading: kanjiReadings[kanji],
+              });
+            }
+          });
+
+          // Sort replacements by start position
+          replacements.sort((a, b) => a.start - b.start);
+
+          // Remove overlapping replacements (keep the first one)
+          const filteredReplacements = [];
+          let lastEnd = -1;
+          replacements.forEach((replacement) => {
+            if (replacement.start >= lastEnd) {
+              filteredReplacements.push(replacement);
+              lastEnd = replacement.end;
+            }
+          });
+
+          // Build the new content
+          if (filteredReplacements.length > 0) {
+            let currentIndex = 0;
+            filteredReplacements.forEach((replacement) => {
+              // Add text before the kanji
+              if (replacement.start > currentIndex) {
+                fragment.appendChild(
+                  document.createTextNode(
+                    text.substring(currentIndex, replacement.start)
+                  )
+                );
+              }
+
+              // Create kanji span with tooltip
+              const kanjiSpan = document.createElement("span");
+              kanjiSpan.className = "kanji";
+              kanjiSpan.textContent = replacement.kanji;
+
+              const readingSpan = document.createElement("span");
+              readingSpan.className = "reading";
+              readingSpan.textContent = replacement.reading;
+
+              kanjiSpan.appendChild(readingSpan);
+              fragment.appendChild(kanjiSpan);
+
+              currentIndex = replacement.end;
+            });
+
+            // Add remaining text
+            if (currentIndex < text.length) {
+              fragment.appendChild(
+                document.createTextNode(text.substring(currentIndex))
+              );
+            }
+
+            // Replace the text node with the fragment
+            textNode.parentNode.replaceChild(fragment, textNode);
+          }
+        });
+      }
+
+      // Run the function after the page loads
+      window.addEventListener("DOMContentLoaded", () => {
+        // Add a small delay to ensure all content is loaded
+        setTimeout(addKanjiTooltips, 100);
+      });
     </script>
   </body>
 </html>
